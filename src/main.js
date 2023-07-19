@@ -1,21 +1,29 @@
-TODO: Setup
-create a player
-don't let gravity fool you
-move your ass
-platforms
-background
-win or loose
-images
-scroll
-pits
-levels
-improvements
-
-
 const canvas = document.querySelector("canvas");
 
 console.log(canvas);
 
-const con = canvas.getContext("2d");
+const cntx = canvas.getContext("2d");
 
-console.log(con);
+console.log(cntx);
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Create a player
+class Player {
+  constructor() {
+    this.position = {
+      x: 100,
+      y: 100,
+    };
+    this.width = 45;
+    this.height = 45;
+  }
+  draw() {
+    cntx.fillStyle = "gray";
+    cntx.fillRect(this.position.x, this.position.y, this.width, this.height);
+  }
+}
+
+const player = new Player();
+player.draw();
