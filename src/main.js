@@ -43,11 +43,12 @@ class Player {
   }
 }
 
+// create the platform
 class Platform {
   constructor() {
     this.position = {
-      x: 450,
-      y: 100,
+      x: 150,
+      y: 250,
     };
 
     this.width = 100;
@@ -83,6 +84,16 @@ function animate() {
     player.velocity.x = -5;
   } else {
     player.velocity.x = 0;
+  }
+  // detect collision
+  if (
+    player.position.y + player.height <= platform.position.y &&
+    player.position.y + player.height + player.velocity.y >=
+      platform.position.y &&
+    player.position.x + player.width >= platform.position.x &&
+    player.position.x <= platform.position.x + platform.width
+  ) {
+    player.velocity.y = 0;
   }
 }
 
