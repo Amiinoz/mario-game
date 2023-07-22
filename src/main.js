@@ -80,6 +80,8 @@ const keys = {
     pressed: false,
   },
 };
+// creating win or loose
+let scrollOffset = 0;
 
 // movements
 function animate() {
@@ -100,15 +102,18 @@ function animate() {
     player.velocity.x = 0;
 
     if (keys.right.pressed) {
+      scrollOffset += 5;
       platforms.forEach((platform) => {
         platform.position.x -= 5;
       });
     } else if (keys.left.pressed) {
+      scrollOffset -= 5;
       platforms.forEach((platform) => {
         platform.position.x += 5;
       });
     }
   }
+  console.log(scrollOffset);
   // detect  platform collision
   platforms.forEach((platform) => {
     if (
@@ -121,6 +126,9 @@ function animate() {
       player.velocity.y = 0;
     }
   });
+  if (scrollOffset > 2500) {
+    console.log("win");
+  }
 }
 
 animate();
