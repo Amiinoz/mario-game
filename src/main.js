@@ -1,3 +1,10 @@
+// import platform1 from "./images/platform1.png";
+// console.log(platform1);
+
+const platform1 = new Image();
+platform1.src = "./images/platform1.png";
+console.log(platform1);
+
 const canvas = document.querySelector("canvas");
 
 console.log(canvas);
@@ -45,7 +52,7 @@ class Player {
 
 // create the platform
 class Platform {
-  constructor({ x, y }) {
+  constructor({ x, y, image }) {
     this.position = {
       x,
       y,
@@ -53,10 +60,16 @@ class Platform {
 
     this.width = 100;
     this.height = 10;
+
+    this.image = image;
   }
+  // draw() {
+  //   cntx.fillStyle = "green";
+  //   cntx.fillRect(this.position.x, this.position.y, this.width, this.height);
+  // }
+
   draw() {
-    cntx.fillStyle = "green";
-    cntx.fillRect(this.position.x, this.position.y, this.width, this.height);
+    cntx.drawImage(this.image, this.position.x, this.position.y);
   }
 }
 
@@ -66,6 +79,7 @@ const platforms = [
   new Platform({
     x: 150,
     y: 250,
+    image: platform1,
   }),
   new Platform({
     x: 500,
@@ -176,7 +190,6 @@ addEventListener("keyup", ({ keyCode }) => {
     case 68:
       console.log("right");
       keys.right.pressed = false;
-
       break;
 
     case 87:
