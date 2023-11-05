@@ -141,7 +141,7 @@ function animate() {
     }
   });
   if (scrollOffset > 2500) {
-    console.log("win");
+    console.log("Yeeeaaaa... You Win");
   }
 }
 
